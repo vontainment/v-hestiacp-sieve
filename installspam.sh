@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cat <<EOF | sudo tee /etc/dovecot/conf.d/05-spamham.conf
-cp -r /root/hestia-sieve-spamham/conf.d/05-spamham.conf /etc/dovecot/conf.d/05-spamham.conf
+cat <<EOF | sudo tee /etc/dovecot/conf.d/20-spamham.conf
+cp -r /root/hestia-sieve-spamham/conf.d/20-spamham.conf /etc/dovecot/conf.d/05-spamham.conf
 cp -r /root/hestia-sieve-spamham/mail/. /var/mail/
 cp -r /root/hestia-sieve-spamham/sieve/. /etc/dovecot/sieve/
 
