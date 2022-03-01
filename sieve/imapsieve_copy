@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Usage: bash imapsieve_copy <email> <spam|ham> <output_base_dir>
+
+export USER="$1"
+export MSG_TYPE="$2"
+
+export OUTPUT_BASE_DIR="/var/mail/imapsieve_copy"
+export OUTPUT_DIR="${OUTPUT_BASE_DIR}/${MSG_TYPE}"
+export FILE="${OUTPUT_DIR}/${USER}-$(date +%Y%m%d%H%M%S)-${RANDOM}${RANDOM}.eml"
+
+cat > ${FILE} < /dev/stdin
+
+# Logging
+export LOG='logger -p local5.info -t imapsieve_copy'
+[[ $? == 0 ]] && ${LOG} "Copied one ${MSG_TYPE} email reported by ${USER}: ${FILE}"
