@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp -r ./sieve/conf.d/20-spamham.conf /etc/dovecot/conf.d/20-spamham.conf
+cp -r ./conf.d/20-spamham.conf /etc/dovecot/conf.d/20-spamham.conf
 cp -r ./mail/. /var/mail/
 cp -r ./sieve/. /etc/dovecot/sieve/
 mkdir -p /var/mail/imapsieve_copy
