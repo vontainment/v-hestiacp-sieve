@@ -1,0 +1,53 @@
+# SpamAssassin user preferences file.  See 'perldoc Mail::SpamAssassin::Conf'
+# for details of what can be tweaked.
+#*
+#* Note: this file is not read by SpamAssassin until copied into the user
+#* directory. At runtime, if a user has no preferences in their home directory
+#* already, it will be copied for them, allowing them to perform personalised
+#* customisation.  If you want to make changes to the site-wide defaults,
+#* create a file in /etc/spamassassin or /etc/mail/spamassassin instead.
+###########################################################################
+
+# General
+required_hits 4.0
+
+allow_user_rules 0
+
+report_safe 0
+
+trusted_networks 192.168.1.
+
+ok_languages en
+ok_locales en
+
+use_learner 1
+
+use_bayes 1
+use_bayes_rules 1
+
+bayes_min_ham_num 1
+bayes_min_spam_num 1
+
+bayes_auto_learn 1
+bayes_auto_learn_threshold_nonspam -1
+bayes_auto_learn_threshold_spam 5.0
+
+bayes_path /var/lib/spamassassin/bayes
+
+bayes_use_hapaxes 1
+
+bayes_auto_expire 0
+
+bayes_ignore_header X-Bogosity
+bayes_ignore_header X-Spam-Flag
+bayes_ignore_header X-Spam-Status
+
+score BAYES_00 -3
+score BAYES_05 -1
+score BAYES_20 -0.8
+score BAYES_40 0
+score BAYES_50 1.567
+score BAYES_60 3.515
+score BAYES_80 3.608
+score BAYES_95 6
+score BAYES_99 9

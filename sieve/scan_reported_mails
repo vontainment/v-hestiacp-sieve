@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Author: Zhang Huangbin <zhb@iredmail.org>
 # Purpose: Copy spam/ham to another directory and call sa-learn to learn.
 
@@ -23,7 +23,7 @@ export LOCK_FILE='/tmp/scan_reported_mails.lock'
 export LOG='logger -p local5.info -t scan_reported_mails'
 
 # `sa-learn` command, with optional arguments.
-export SA_LEARN="sa-learn -u ${SPAMD_USER} --dbpath ${SPAMD_USER_HOMEDIR}/.spamassassin"
+export SA_LEARN="sa-learn --no-sync -u ${SPAMD_USER} --dbpath ${SPAMD_USER_HOMEDIR}/bayes"
 
 # Spool directory.
 # Must be owned by mail:mail.
@@ -84,5 +84,7 @@ if [[ X"$?" != X'0' ]]; then
     rm -rf ${SPOOL_LEARN_HAM_DIR} &>/dev/null
     ${LOG} '[CLEAN]' ${output}
 fi
+
+sa-learn --sync >> /var/log/sa-learn.log 2>&1
 
 rm -f ${LOCK_FILE} &>/dev/null
