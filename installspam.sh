@@ -18,8 +18,8 @@ service dovecot restart
 # su -s /bin/bash debian-spamd -c "sa-learn --dump magic"
 
 cat <<EOF | sudo tee /etc/cron.daily/spamham
-#!/usr/bin/env
-bash /etc/dovecot/sieve/scan_reported_mails
+#!/usr/bin/env bash
+/etc/dovecot/sieve/scan_reported_mails
 EOF
 
 chmod 755 /etc/cron.daily/spamham && chown root:root /etc/cron.daily/spamham
